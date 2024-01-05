@@ -1,0 +1,181 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>User Dashboard</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-rbsA2VBKQhggwzxH7pPCaAqO46MgnOM80zW1RWuH61DGLwZJEdK2Kadq2F9CUG65" crossorigin="anonymous">
+    <link rel="stylesheet" href="/css/style.css">
+    <style>
+        body {
+            background-color: rgba(253, 196, 196, 0.321);
+            min-height: 100vh;
+            display: flex;
+            flex-direction: column;
+        }
+        .content {
+            flex: 1;
+        }
+    </style>
+</head>
+<body>
+<nav class="navbar navbar-expand-lg navbar-dark bg-dark" style="height: 100px; padding-left: 40px;">
+    <a class="navbar-brand" href="/" style="font-size: 40px;">
+        <img src="/images/3.webp" alt="Logo" width="60" height="60" class="d-inline-block align-text-top">
+        Hotel Ganesha, Ranthambhore
+    </a>
+    <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+        <span class="navbar-toggler-icon"></span>
+    </button>
+
+    <div class="collapse navbar-collapse justify-content-end" id="navbarSupportedContent">
+        <ul class="navbar-nav mr-auto" style="padding-right: 160px;">
+            <li class="nav-item active">
+                <a class="nav-link" href="/">Home</a>
+            </li>
+            <li class="nav-item">
+                <a class="nav-link" href="/rooms">Rooms</a>
+            </li>
+            <li class="nav-item">
+                <a class="nav-link" href="/services">Services</a>
+            </li>
+            <li class="nav-item">
+                <a class="nav-link" href="/experiences">Experiences</a>
+            </li>
+            <li class="nav-item">
+                <button class="btnLogin-popup"><a class="nav-link" onclick="logOutUser()">Logout</a></button>
+            </li>
+        </ul>
+    </div>
+</nav>
+<!-- User Dashboard Content -->
+<div class="container mt-5 content">
+    <div class="row">
+        <div class="col-md-5 mb-3">
+            <h2>User Profile</h2>
+            <!-- First Name -->
+            <div class="form-group mb-3">
+                <label for="fName">First Name</label>
+                <input type="text" class="form-control" id="fName" value="John" readonly>
+                <button class="btn btn-primary edit-button" onclick="edit('fName')">Edit</button>
+                <button class="btn btn-success save-button hidden" onclick="save('fName')">Save</button>
+            </div>
+            <!-- Last Name -->
+            <div class="form-group mb-3">
+                <label for="lName">Last Name</label>
+                <input type="text" class="form-control" id="lName" value="Doe" readonly>
+                <button class="btn btn-primary edit-button" onclick="edit('lName')">Edit</button>
+                <button class="btn btn-success save-button hidden" onclick="save('lName')">Save</button>
+            </div>
+            <!-- Email -->
+            <div class="form-group mb-3">
+                <label for="pEmail">Email ID</label>
+                <input type="email" class="form-control" id="pEmail" value="Doe" readonly>
+                <button class="btn btn-primary edit-button" onclick="edit('pEmail')">Edit</button>
+                <button class="btn btn-success save-button hidden" onclick="save('pEmail')">Save</button>
+            </div>
+            <!-- House Number -->
+            <div class="form-group mb-3">
+                <label for="houseNo">House No.</label>
+                <input type="text" class="form-control" id="houseNo" value="Doe" readonly>
+                <button class="btn btn-primary edit-button" onclick="edit('houseNo')">Edit</button>
+                <button class="btn btn-success save-button hidden" onclick="save('houseNo')">Save</button>
+            </div>
+            <!-- State -->
+            <div class="form-group mb-3">
+                <label for="state">State</label>
+                <input type="text" class="form-control" id="state" value="Doe" readonly>
+                <button class="btn btn-primary edit-button" onclick="edit('state')">Edit</button>
+                <button class="btn btn-success save-button hidden" onclick="save('state')">Save</button>
+            </div>
+            <!-- City -->
+            <div class="form-group mb-3">
+                <label for="city">City</label>
+                <input type="text" class="form-control" id="city" value="Doe" readonly>
+                <button class="btn btn-primary edit-button" onclick="edit('city')">Edit</button>
+                <button class="btn btn-success save-button hidden" onclick="save('city')">Save</button>
+            </div>
+            <!-- Country -->
+            <div class="form-group mb-3">
+                <label for="country">Country</label>
+                <input type="text" class="form-control" id="country" value="Doe" readonly>
+                <button class="btn btn-primary edit-button" onclick="edit('country')">Edit</button>
+                <button class="btn btn-success save-button hidden" onclick="save('country')">Save</button>
+            </div>
+            <!-- Pin Code -->
+            <div class="form-group mb-3">
+                <label for="pinCode">Pincode</label>
+                <input type="text" class="form-control" id="pinCode" value="Doe" readonly>
+                <button class="btn btn-primary edit-button" onclick="edit('pinCode')">Edit</button>
+                <button class="btn btn-success save-button hidden" onclick="save('pinCode')">Save</button>
+            </div>
+            <!-- Gender -->
+            <div class="form-group mb-3">
+                <label for="gender">Gender</label>
+                <select class="form-control" id="gender" >
+                    <option value="Male">Male</option>
+                    <option value="Female">Female</option>
+                    <option value="Other">Other</option>
+                </select>
+                <button class="btn btn-primary edit-button" onclick="edit('gender')" readonly>Edit</button>
+                <button class="btn btn-success save-button hidden" onclick="save('gender')">Save</button>
+            </div>
+            <!-- Aadhaar Number -->
+            <div class="form-group mb-3">
+                <label for="aadhaarNo">Aadhaar Number</label>
+                <input type="text" class="form-control" id="aadhaarNo" value="Doe" readonly>
+                <button class="btn btn-primary edit-button" onclick="edit('aadhaarNo')">Edit</button>
+                <button class="btn btn-success save-button hidden" onclick="save('aadhaarNo')">Save</button>
+            </div>
+        </div>
+    </div>
+</div>
+
+<div class="container mt-5 content">
+    <div class="row">
+        <div class="col-md-5 mb-3">
+            <h2>Change Password</h2>
+            <div class="form-group-2 mb-3">
+                <label for="n_pass">New Password</label>
+                <input type="password" class="form-control" id="n_pass" value="">
+            </div>
+            <div class="form-group-2 mb-3">
+                <label for="c_pass">Confirm Password</label>
+                <input type="password" class="form-control" id="c_pass" value="">
+            </div>
+            <button class="btn btn-primary edit-button" onclick="changePassword()">Change Password</button>
+        </div>
+    </div>
+</div>
+
+<!-- Sticky Footer -->
+<footer class="footer">
+    <div class="container">
+        <div class="footer-content">
+            <div class="footer-links">
+                <ul>
+                    <li><a href="/">Home</a></li>
+                    <li><a href="/dashboard">Book A Room</a></li>
+                    <li><a href="/dashboard/bookings">Bookings</a></li>
+                    <li><a href="/dashboard/bill">Your Bills</a></li>
+                </ul>
+            </div>
+            <div class="footer-social">
+                <ul>
+                    <i class="fa fa-facebook-square" style="font-size:60px; margin-right: 10px;"></i>
+                    <i class="fa fa-youtube-play" style="font-size:60px; margin-right: 10px;"></i>
+                    <i class="fa fa-instagram" style="font-size:60px;"></i>
+                </ul>
+            </div>
+        </div>
+        <div class="footer-copyright">
+            &copy; 2023 Hotel Ganesha. All rights reserved.
+        </div>
+    </div>
+</footer>
+<!-- End of Sticky Footer -->
+<script src="https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-kenU1KFdBIe4zVF0s0G1M5b4hcpxyD9F7jL+jjXkk+Q2h455rYXK/7HAuoJl+0I4" crossorigin="anonymous"></script>
+<script src="/js/profile.js"></script>
+</body>
+</html>
